@@ -1076,13 +1076,13 @@ class BruteForceGUI:
                             self.log_queue.put((f"[Browser {worker_id}] Timeout waiting for username field: {username_selector}", False))
                             continue
 
-                        page.type(username_selector, username, delay=25)
-                        page.type(password_selector, password, delay=30)
+                        page.fill(username_selector, username, delay=25)
+                        page.fill(password_selector, password, delay=30)
                         start_url = page.url
 
                         if submit_selector:
                             try:
-                                page.click(submit_selector, timeout=300)
+                                page.click(submit_selector, timeout=3000)
                             except:
                                 page.press(password_selector, "Enter")
                         else:
